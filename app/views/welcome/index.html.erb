@@ -1,0 +1,134 @@
+
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #bb0b0b;" >
+<a class="navbar-brand" href="/">Sistema Base</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+    </ul>
+    <ul class="my-2 my-lg-0">
+      <li class="nav-item">
+        <a href="/login" type="button" class="btn btn-warning" role="button" aria-pressed="true">Ingresar</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br><br>
+<div class="container">
+<!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Ingresar Plataforma
+</button>
+
+<!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+       <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Ingresar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="container">
+  <div class="row">
+    <div class="col-md" id="section">
+      <h4>Ingresar</h4><br>
+      <form action="/sessions/new/user" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <div class="form-group">
+          <label for="Email" >Email</label>
+          <input type="text" class="form-control" name="user[email]" id="Email">
+        </div>
+        <div class="form-group">
+          <label for="Password">Password</label>
+          <input type="password" class="form-control" name="user[password]" id="Password">
+        </div>
+        <button type="submit" class="btn btn-primary" value="Log In">Ingresar</button>
+      </form>
+    </div>
+    <div class="col-sm">
+      <%= flash[:errors] %>
+    </div>
+  </div>
+  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter2">
+  Registrate Aqui
+</button>
+
+
+<!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter2" tabindex="-2" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Registro de Usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+  <h4>Registro</h4><br>
+  <form action="/users/new" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div class="form-group">
+      <label for="nombre" >Nombre</label>
+      <input type="text" class="form-control" name="user[nombre]" id="nombre">
+    </div>
+    <div class="form-group">
+      <label for="apellido" >Apellido</label>
+      <input type="text" class="form-control" name="user[apellido]" id="apellido">
+    </div>
+    <div class="form-group">
+      <label for="Email" >Email</label>
+      <input type="text" class="form-control" name="user[email]" id="Email">
+    </div>
+    <div class="form-group">
+      <label for="Password" >Password</label>
+      <input type="password" class="form-control" name="user[password]" id="Password">
+    </div>
+    <button type="submit" class="btn btn-primary" value="Register">Registrar</button>
+  </form>
+  
+
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |msg|%>
+      <div id="errors" class="alert alert-danger" role="alert">
+        <ul>
+          <li><%= msg %></li>
+        </ul>
+      </div>
+    <%end%>
+  <%end%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="/login" type="button" class="btn btn-primary" role="button" aria-pressed="true">Ingresar</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
